@@ -11,6 +11,7 @@ let waitCorrect = false;
 let termIndex = 0;
 
 let incorrect = [];
+let checked = [];
 
 
 if(getCookie('dark') == 'true') body.classList.add('dark');
@@ -22,16 +23,55 @@ $('#toggleDarkMode').addEventListener('click', () => {
 });
 
 $('#select').addEventListener('click', e => {
-	if(e.target.classList.contains('checkbox')) e.target.toggleAttribute('checked');
+	if(!e.target.classList.contains('checkbox')) return;
+	
+	e.target.toggleAttribute('checked');
 
 	let checkboxes = $('.checkbox');
-	let arr = [];
+	checked = [];
 	checkboxes.forEach((check, i) => {
-		if(check.hasAttribute('checked')) arr.push(i);
+		if(check.hasAttribute('checked')) {
+			checked.push(i);
+		}
 	});
 
-	document.cookie = 'selected=' + arr.join(',') + '; expires=' + new Date(Date.now() + 3e10);
+	console.log(checked);
+
+	if(checked.length == 0) {
+		$('#select > header > button:nth-child(3)').setAttribute('disabled', '');
+	}
+	else {
+		$('#select > header > button:nth-child(3)').removeAttribute('disabled');
+	}
+
+	document.cookie = 'checked=' + checked.join(',') + '; expires=' + new Date(Date.now() + 3e10);
 })
+
+
+$('#select > header > button:nth-child(1)').addEventListener('click', e => {
+	let checkboxes = $('.checkbox');
+	let arr = [];
+	for(let i = 0; i < checkboxes.length; i++) {
+		arr.push(i);
+		checkboxes[i].setAttribute('checked', '');
+	}
+
+	document.cookie = 'checked=' + arr.join(',') + '; expires=' + new Date(Date.now() + 3e10);
+});
+
+$('#select > header > button:nth-child(2)').addEventListener('click', e => {
+	$('.checkbox').forEach(check => {
+		check.removeAttribute('checked');
+	})
+
+	document.cookie = 'checked=null; expires=' + new Date(Date.now() + 3e10);
+});
+
+$('#select > header > button:nth-child(3)').addEventListener('click', e => {
+	$('#select').classList.remove('show');
+
+	
+});
 
 
 function getCookie(name) {

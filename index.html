@@ -8,6 +8,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css" type="text/css">
 	<script src="terms.js"></script>
+	<script src="sketch.js" defer></script>
 </head>
 <body class>
 	<div id="toggleDarkMode">
@@ -28,7 +29,15 @@
 	</main>
 
 
-	<section id="select">
+	<section id="select" class="show">
+		<header>
+			<button>Markera alla</button>
+			<button>Avmarkera alla</button>
+			<button>Starta
+				<img src="icons/arrow-right.svg">
+			</button>
+		</header>
+
 		<div class="item">
 			<div class="checkbox"></div>
 			<span class="itemName">Brant</span>
@@ -45,6 +54,6 @@
 		</div>
 	</section>
 
-	<script src="sketch.js"></script>
+	<!-- <script src="sketch.js"></script> -->
 </body>
 </html>

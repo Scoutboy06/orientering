@@ -9,6 +9,11 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	transition: color .1s, background .1s;
+}
+
+button[disabled] {
+	cursor: not-allowed;
 }
 
 
@@ -116,6 +121,14 @@ body {
 	border-radius: .3rem;
 	z-index: 99;
 	padding: 1em;
+	visibility: hidden;
+	opacity: 0;
+	color: #000;
+}
+
+#select.show {
+	visibility: visible;
+	opacity: 1;
 }
 
 #select .item {
@@ -135,8 +148,32 @@ body {
 }
 
 #select .checkbox[checked] {
-	background: #555;
-	border-color: #555;
+	background: #90CAF9;
+	border-color: #90CAF9;
+}
+
+#select header {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 30px;
+}
+
+#select header button {
+	background: #90CAF9;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, .5);
+	margin: 0 5px;
+	padding: 6px 10px;
+	text-align: center;
+	border-radius: .3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+#select header button img {
+	margin-left: 6px;
 }
 
 
@@ -166,8 +203,9 @@ body.dark input {
 
 body.dark #select {
 	background: #333;
-	border: rgba(255, 255, 255, .1);
+	border-color: rgba(255, 255, 255, .1);
 	box-shadow: none;
+	color: #e4e4e4;
 }
 
 
@@ -177,6 +215,12 @@ body.dark #select .checkbox {
 }
 
 body.dark #select .checkbox[checked] {
-	background: #555;
-	border-color: #555;
+	background: #42A5F5;
+	border-color: #42A5F5;
+}
+
+
+
+body.dark #select header button {
+	background: #42A5F5;
 }
