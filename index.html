@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Orientering</title>
+	<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css"> -->
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script src="terms.js"></script>
+</head>
+<body class>
+	<div id="toggleDarkMode">
+		<img src="icons/sun.svg" alt="Light">
+		<img src="icons/moon.svg" alt="Dark">
+	</div>
+
+	<main id="main">
+		<section class="imgContainer">
+			<img src="images/brant.png" id="img">
+			<img src="icons/check.svg" alt="Correct!" id="check">
+		</section>
+
+		<section class="inputContainer">
+			<input type="text" spellcheck="false" id="input2" readonly>
+			<input type="text" spellcheck="false" id="input">
+		</section>
+	</main>
+
+
+	<section id="select">
+		<div class="item">
+			<div class="checkbox"></div>
+			<span class="itemName">Brant</span>
+		</div>
+
+		<div class="item">
+			<div class="checkbox"></div>
+			<span class="itemName">Bred väg</span>
+		</div>
+
+		<div class="item">
+			<div class="checkbox"></div>
+			<span class="itemName">Brunn</span>
+		</div>
+	</section>
+
+	<script src="sketch.js"></script>
+</body>
+</html>
