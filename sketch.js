@@ -153,10 +153,11 @@ function nextTerm() {
 	console.log(termIndex);
 	console.log(checked);
 
-	termIndex = checked[parseInt(checked[termIndex]) + 1];
-	console.log(termIndex);
+	//termIndex = checked[parseInt(checked[termIndex]) + 1];
+  termIndex = checked[checked.indexOf(termIndex) + 1];
+	//alert(termIndex);
 
-	if(termIndex /*> checked.slice(-1)*/) {
+	if(!termIndex) {
 		termIndex = checked[0];
 		select.classList.add('show');
 	}
