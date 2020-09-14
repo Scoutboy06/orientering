@@ -12,7 +12,7 @@ let waitCorrect = false;
 let termIndex = 0;
 
 let incorrect = [];
-let checked = getCookie('checked').split(',');
+let checked = (getCookie('checked') || '').split(',');
 
 
 if(getCookie('dark') == 'true') body.classList.add('dark');
@@ -20,7 +20,7 @@ if(getCookie('dark') == 'true') body.classList.add('dark');
 
 (function() {
 	const parent = select;
-	const checkedCookie = getCookie('checked').split(',');
+	const checkedCookie = (getCookie('checked') || '').split(',');
 
 	for(let i = 0; i < terms.length; i++) {
 		const item = document.createElement('div');
