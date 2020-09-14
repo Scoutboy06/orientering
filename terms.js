@@ -32,4 +32,4 @@ vattendrag_bäck.png
 vägar.png
 åker.png
 ås.png
-öppen_mark.jpg`.split('\n');
+öppen mark.jpg`.split('\n');
