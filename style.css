@@ -124,6 +124,7 @@ button[disabled] {
 	visibility: hidden;
 	opacity: 0;
 	color: #000;
+	overflow-y: auto;
 }
 
 #select.show {
@@ -203,7 +204,7 @@ body.dark input {
 
 body.dark #select {
 	background: #333;
-	border-color: rgba(255, 255, 255, .1);
+	border-color: transparent;
 	box-shadow: none;
 	color: #e4e4e4;
 }

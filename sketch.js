@@ -5,16 +5,45 @@ const input2 = $('#input2');
 const body = $('body')[0];
 const check = $('#check');
 const img = $('#img');
+const select = $('#select');
 
 
 let waitCorrect = false;
 let termIndex = 0;
 
 let incorrect = [];
-let checked = [];
+let checked = getCookie('checked').split(',');
 
 
 if(getCookie('dark') == 'true') body.classList.add('dark');
+
+
+(function() {
+	const parent = select;
+	const checkedCookie = getCookie('checked').split(',');
+
+	for(let i = 0; i < terms.length; i++) {
+		const item = document.createElement('div');
+		item.classList.add('item');
+
+		const checkbox = document.createElement('div');
+		checkbox.classList.add('checkbox');
+
+		if(checkedCookie.indexOf(JSON.stringify(i)) > -1) checkbox.setAttribute('checked', '');
+
+		const itemName = document.createElement('span');
+		itemName.classList.add('itemName');
+
+		let text = terms[i].replace(/_/g, '/');
+		text = text[0].toUpperCase() + text.slice(1);
+		itemName.textContent = text.split('.')[0];
+
+		item.appendChild(checkbox);
+		item.appendChild(itemName);
+
+		parent.appendChild(item);
+	}
+})();
 
 
 $('#toggleDarkMode').addEventListener('click', () => {
@@ -22,7 +51,7 @@ $('#toggleDarkMode').addEventListener('click', () => {
 	document.cookie = 'dark=' + (!!body.classList.contains('dark')) + '; expires=' + new Date(Date.now() + 3e10);
 });
 
-$('#select').addEventListener('click', e => {
+select.addEventListener('click', e => {
 	if(!e.target.classList.contains('checkbox')) return;
 	
 	e.target.toggleAttribute('checked');
@@ -35,7 +64,7 @@ $('#select').addEventListener('click', e => {
 		}
 	});
 
-	console.log(checked);
+	// console.log(checked);
 
 	if(checked.length == 0) {
 		$('#select > header > button:nth-child(3)').setAttribute('disabled', '');
@@ -68,9 +97,9 @@ $('#select > header > button:nth-child(2)').addEventListener('click', e => {
 });
 
 $('#select > header > button:nth-child(3)').addEventListener('click', e => {
-	$('#select').classList.remove('show');
-
-	
+	termIndex = checked[0];
+	select.classList.remove('show');
+	img.setAttribute('src', 'images/' + terms[termIndex]);
 });
 
 
@@ -98,7 +127,7 @@ window.addEventListener('keypress', e => {
 
 
 	let text = input.value.trim().toLowerCase();
-	console.log(text);
+	// console.log(text);
 
 
 	if(text == terms[termIndex].split('.')[0].replace(/_/g, '/')) {
@@ -124,19 +153,12 @@ window.addEventListener('keypress', e => {
 function nextTerm() {
 	if(++termIndex == terms.length) {
 		termIndex = 0;
-		completed();
+		select.classList.add('show');
 	}
 
 	else {
 		img.setAttribute('src', 'images/' + terms[termIndex])
 	}
 
-	console.log(termIndex);
-}
-
-
-
-
-function completed() {
-
+	// console.log(termIndex);
 }
