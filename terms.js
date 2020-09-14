@@ -24,7 +24,7 @@ skog.jpg
 sten.jpg
 stängsel.jpg
 sänka.png
-tornjpg
+torn.jpg
 tunnel.jpg
 tätare skog.jpg
 vatten.png

@@ -15,13 +15,11 @@ let incorrect = [];
 let checked = (getCookie('checked') || '').split(',');
 
 
+if(!getCookie('checked')) $('#select > header > button:nth-child(3)').setAttribute('disabled', '');
 if(getCookie('dark') == 'true') body.classList.add('dark');
 
 
 (function() {
-	const parent = select;
-	const checkedCookie = (getCookie('checked') || '').split(',');
-
 	for(let i = 0; i < terms.length; i++) {
 		const item = document.createElement('div');
 		item.classList.add('item');
@@ -29,7 +27,7 @@ if(getCookie('dark') == 'true') body.classList.add('dark');
 		const checkbox = document.createElement('div');
 		checkbox.classList.add('checkbox');
 
-		if(checkedCookie.indexOf(JSON.stringify(i)) > -1) checkbox.setAttribute('checked', '');
+		if(checked.indexOf(JSON.stringify(i)) > -1) checkbox.setAttribute('checked', '');
 
 		const itemName = document.createElement('span');
 		itemName.classList.add('itemName');
@@ -41,7 +39,7 @@ if(getCookie('dark') == 'true') body.classList.add('dark');
 		item.appendChild(checkbox);
 		item.appendChild(itemName);
 
-		parent.appendChild(item);
+		select.appendChild(item);
 	}
 })();
 
@@ -151,8 +149,15 @@ window.addEventListener('keypress', e => {
 
 
 function nextTerm() {
-	if(++termIndex == terms.length) {
-		termIndex = 0;
+	console.log(checked);
+	console.log(termIndex);
+	console.log(checked);
+
+	termIndex = checked[parseInt(checked[termIndex]) + 1];
+	console.log(termIndex);
+
+	if(termIndex /*> checked.slice(-1)*/) {
+		termIndex = checked[0];
 		select.classList.add('show');
 	}
 
